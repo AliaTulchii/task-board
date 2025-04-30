@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IUser } from "../../models/IUser";
-import { fetchUsers } from "./ActionCreators";
+import { fetchUsers } from "../../app/store/redusers/ActionCreators";
+import { IUser } from "./types";
 
 interface UserState {
   users: IUser[];
@@ -30,7 +30,6 @@ export const userSlice = createSlice({
      })
      .addCase(fetchUsers.rejected, (state, action) => {
       state.isLoading = false;
-      // Якщо action.payload є — беремо його, інакше беремо стандартне повідомлення з error.message
       state.error = action.payload as string || action.error.message || "Unknown error";
      });
  },
