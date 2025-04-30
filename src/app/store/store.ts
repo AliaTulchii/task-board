@@ -2,7 +2,7 @@ import {combineReducers, configureStore} from "@reduxjs/toolkit"
 import userReducer from '../../features/users/UserSlice'
 import taskReducer from '../../features/tasks/TaskSlice'
 import { userApi } from "../services/UserService"
-import { taskApi } from "../services/UserService"
+import { taskApi } from "../services/TasksService"
 
 
 
@@ -19,7 +19,7 @@ export const setupStore = () =>{
     return configureStore({
         reducer:rootReducer,
         middleware:(getDefaultMiddleware) => 
-            getDefaultMiddleware().concat(userApi.middleware),
+            getDefaultMiddleware().concat(userApi.middleware, taskApi.middleware)
     })
 }
 

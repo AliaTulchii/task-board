@@ -5,7 +5,7 @@ export const taskApi = createApi({
   reducerPath: 'taskAPI',
   baseQuery: fetchBaseQuery({ baseUrl: 'https://jsonplaceholder.typicode.com/' }),
   endpoints: (build) => ({
-    fetchAllUsers: build.query<ITask[], number>({
+    fetchAllTasks: build.query<ITask[], number>({
       query: (limit: number = 5) => ({
         url: '/todos',
         params: {
