@@ -1,19 +1,15 @@
-import axios from "axios";
-import { IUser } from "../../../features/users/types";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { ITask } from "../../../features/tasks/types";
+import { getTasksResponse, getUsersResponse, TASKS_FETCH_ALL, UNKNOWN_ERROR, USERS_FETCH_ALL} from "./Action.Constants";
 
 
 export const fetchUsers = createAsyncThunk(
-  "user/fetchAll",
+  USERS_FETCH_ALL,
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get<IUser[]>(
-        "https://jsonplaceholder.typicode.com/users"
-      );
+      const response = await getUsersResponse();
       return response.data;
     } catch (error) {
-      let message = "Unknown error";
+      let message = UNKNOWN_ERROR
       if (error instanceof Error) {
         message = error.message;
       }
@@ -24,15 +20,13 @@ export const fetchUsers = createAsyncThunk(
 
 
 export const fetchTasks = createAsyncThunk(
-  "task/fetchAll",
+  TASKS_FETCH_ALL,
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get<ITask[]>(
-        "https://jsonplaceholder.typicode.com/todos"
-      );
+      const response = await getTasksResponse()
       return response.data;
     } catch (error) {
-      let message = "Unknown error";
+      let message = UNKNOWN_ERROR;
       if (error instanceof Error) {
         message = error.message;
       }

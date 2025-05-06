@@ -1,13 +1,18 @@
-import { userApi } from "../../../../app/services/UserService"
+import { useSelector } from "react-redux";
 import UserItem from "../UserItem/UserItem"
+import { selectAllUsers, selectUsersError, selectUsersLoading } from "../../selectors";
+import { ERROR_MESSAGE, LOADING } from "../User.Constants";
 
 
 const UserContainer = () => {
-    const {data: users, error, isLoading} = userApi.useFetchAllUsersQuery(5)
+  const users = useSelector(selectAllUsers);
+  const usersLoading = useSelector(selectUsersLoading);
+  const usersError = useSelector(selectUsersError);
+
   return (
     <div>
-        {isLoading && <h1>Loading...</h1>}
-        {error && <h1>Something went wrong</h1>}
+        {usersLoading && <h1>{LOADING}</h1>}
+        {usersError && <h1>{ERROR_MESSAGE}</h1>}
       {users?.map(user => 
         <UserItem user={user} key={user.id}/>
       )}
