@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { fetchUsers } from "../../app/store/redusers/ActionCreators";
+import { fetchUsers } from "../../app/store/reducers/ActionCreators";
 import { IUser } from "./types";
+import { useAppSelector } from "../../app/hooks/redux";
 
 interface UserState {
   users: IUser[];
@@ -15,7 +16,7 @@ const initialState: UserState = {
 };
 
 export const userSlice = createSlice({
-  name: "user",
+  name: "users",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -36,3 +37,5 @@ export const userSlice = createSlice({
 });
 
 export default userSlice.reducer;
+export const useUsersSelector = () => useAppSelector((state) => state.users);
+

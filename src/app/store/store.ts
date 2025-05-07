@@ -8,9 +8,9 @@ import { taskApi } from "../services/TasksService"
 
 
 const rootReducer = combineReducers({
-     userReducer,
+     users: userReducer,
      [userApi.reducerPath]: userApi.reducer,
-     taskReducer,
+     tasks: taskReducer,
      [taskApi.reducerPath]: taskApi.reducer
 
 })

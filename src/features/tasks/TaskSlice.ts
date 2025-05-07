@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { fetchTasks } from "../../app/store/redusers/ActionCreators";
+import { fetchTasks } from "../../app/store/reducers/ActionCreators";
 import { ITask } from "./types";
+import { useAppSelector } from "../../app/hooks/redux";
 
 interface TaskState {
   tasks: ITask[];
@@ -15,7 +16,7 @@ const initialState: TaskState = {
 };
 
 export const taskSlice = createSlice({
-  name: "task",
+  name: "tasks",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -36,3 +37,4 @@ export const taskSlice = createSlice({
 });
 
 export default taskSlice.reducer;
+export const useTasksSelector = () => useAppSelector((state) => state.tasks);

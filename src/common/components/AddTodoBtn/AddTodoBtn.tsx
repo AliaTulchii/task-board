@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button,  } from '@mui/material';
+import { UI_TEXT } from '../Components.Constants';
 
 const AddTodoBtn: React.FC = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -12,7 +13,7 @@ const AddTodoBtn: React.FC = () => {
   return (
     <div>
       <Button variant="contained" color="primary" onClick={handleClickOpen}>
-        Add Task
+      {UI_TEXT.ADD_TASK_BUTTON}
       </Button>
 
     </div>
