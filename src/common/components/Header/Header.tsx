@@ -29,7 +29,7 @@ interface HeaderProps {
   usernameFilter: string;
   completedFilter: string;
   onUsernameChange: Dispatch<SetStateAction<string>>;
-  onCompletedChange: Dispatch<SetStateAction<string>>;
+  onCompletedChange: Dispatch<SetStateAction<CompletedFilter>>;
 }
 
 const Header: React.FC<HeaderProps> = ({
@@ -86,7 +86,7 @@ const Header: React.FC<HeaderProps> = ({
             <Select
               value={completedFilter}
               label="Completed"
-              onChange={(e) => onCompletedChange(e.target.value)}
+              onChange={(e) => onCompletedChange(e.target.value as CompletedFilter)}
             >
               <MenuItem value={CompletedFilter.ALL}>{MENU_ITEM_ALL}</MenuItem>
               <MenuItem value={CompletedFilter.YES}>{MENU_ITEM_TRUE}</MenuItem>

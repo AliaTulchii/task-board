@@ -27,13 +27,16 @@ const Dashboard = () => {
     dispatch(fetchTasks());
   }, []);
 
+  const filteredTasks = useMemo(
+    () => filterTasks({ users, tasks, completedFilter, usernameFilter }),
+    [users, tasks, completedFilter, usernameFilter])
+
+
   if (!users.length || !tasks.length) {
     return <h1>{LOADING}</h1>;
   }
 
-  const filteredTasks = useMemo(
-    () => filterTasks({ users, tasks, completedFilter, usernameFilter }),
-    [users, tasks, completedFilter, usernameFilter])
+  
 
   return (
     <main className="dashboard">
