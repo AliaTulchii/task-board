@@ -23,6 +23,7 @@ import {
   MENU_ITEM_FALSE,
   MENU_ITEM_TRUE,
 } from "./Header.Constants";
+import { CompletedFilter } from "../../types";
 
 interface HeaderProps {
   usernameFilter: string;
@@ -87,9 +88,9 @@ const Header: React.FC<HeaderProps> = ({
               label="Completed"
               onChange={(e) => onCompletedChange(e.target.value)}
             >
-              <MenuItem value="">{MENU_ITEM_ALL}</MenuItem>
-              <MenuItem value="true">{MENU_ITEM_TRUE}</MenuItem>
-              <MenuItem value="false">{MENU_ITEM_FALSE}</MenuItem>
+              <MenuItem value={CompletedFilter.ALL}>{MENU_ITEM_ALL}</MenuItem>
+              <MenuItem value={CompletedFilter.YES}>{MENU_ITEM_TRUE}</MenuItem>
+              <MenuItem value={CompletedFilter.NO}>{MENU_ITEM_FALSE}</MenuItem>
             </Select>
           </FormControl>
         </Stack>
