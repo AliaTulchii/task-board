@@ -12,9 +12,12 @@ interface FilterTasksProps {
 
 export const filterTasks = ({ tasks, users, completedFilter, usernameFilter }: FilterTasksProps) => {
   return tasks.filter((task: ITask) => {
-    const matchesCompleted = COMPLETED_FILTER_MAPPER[completedFilter as CompletedFilter]
+    const {userId, completed} = task
 
-    const user = users.find((user: IUser) => user.id === task.userId);
+    const mappedValue = COMPLETED_FILTER_MAPPER[completedFilter as CompletedFilter]
+    const matchesCompleted = mappedValue === CompletedFilter.ALL || completed === mappedValue
+
+    const user = users.find((user: IUser) => user.id === userId);
 
     const matchesUsername =
       !usernameFilter ||
