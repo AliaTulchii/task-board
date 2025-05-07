@@ -1,18 +1,18 @@
-import { FC } from "react"
-import { IUser } from "../../types"
+import { FC } from "react";
+import { IUser } from "../../types";
 
-interface UserItemProps{
-user: IUser;
+interface UserItemProps {
+  user: IUser;
 }
 
-const UserItem: FC<UserItemProps> = ({user}) => {
+const UserItem: FC<UserItemProps> = ({ user }) => {
   return (
     <div>
       {user.id}
       {user.name}
       <button>delete</button>
     </div>
-  )
-}
+  );
+};
 
-export default UserItem
+export default UserItem;

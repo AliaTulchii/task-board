@@ -14,6 +14,15 @@ import {
 } from "@mui/material";
 import { Dispatch, SetStateAction } from "react";
 import { useUsersSelector } from "../../../features/users/UserSlice";
+import {
+  BUTTON_HOME,
+  BUTTON_USERS,
+  INPUT_LABEL_COMPLETED,
+  INPUT_LABEL_USERNAME,
+  MENU_ITEM_ALL,
+  MENU_ITEM_FALSE,
+  MENU_ITEM_TRUE,
+} from "./Header.Constants";
 
 interface HeaderProps {
   usernameFilter: string;
@@ -40,7 +49,7 @@ const Header: React.FC<HeaderProps> = ({
             color="inherit"
             sx={{ textTransform: "none" }}
           >
-            Home
+            {BUTTON_HOME}
           </Button>
           <Button
             component={NavLink}
@@ -48,7 +57,7 @@ const Header: React.FC<HeaderProps> = ({
             color="inherit"
             sx={{ textTransform: "none" }}
           >
-            Users
+            {BUTTON_USERS}
           </Button>
         </Box>
         <Stack direction="row" spacing={2} alignItems="center" flexWrap="wrap">
@@ -56,13 +65,13 @@ const Header: React.FC<HeaderProps> = ({
           <AddTodoBtn />
 
           <FormControl size="small" sx={{ minWidth: 120 }}>
-            <InputLabel>Username</InputLabel>
+            <InputLabel>{INPUT_LABEL_USERNAME}</InputLabel>
             <Select
               value={usernameFilter}
               label="Username"
               onChange={(e) => onUsernameChange(e.target.value)}
             >
-              <MenuItem value="">All</MenuItem>
+              <MenuItem value="">{MENU_ITEM_ALL}</MenuItem>
               {users.map((user) => (
                 <MenuItem key={user.id} value={user.name}>
                   {user.name}
@@ -71,16 +80,16 @@ const Header: React.FC<HeaderProps> = ({
             </Select>
           </FormControl>
 
-          <FormControl size="small"  sx={{ minWidth: 130 }}>
-            <InputLabel>Completed</InputLabel>
+          <FormControl size="small" sx={{ minWidth: 130 }}>
+            <InputLabel>={INPUT_LABEL_COMPLETED}</InputLabel>
             <Select
               value={completedFilter}
               label="Completed"
               onChange={(e) => onCompletedChange(e.target.value)}
             >
-              <MenuItem value="">All</MenuItem>
-              <MenuItem value="true">True</MenuItem>
-              <MenuItem value="false">False</MenuItem>
+              <MenuItem value="">{MENU_ITEM_ALL}</MenuItem>
+              <MenuItem value="true">{MENU_ITEM_TRUE}</MenuItem>
+              <MenuItem value="false">{MENU_ITEM_FALSE}</MenuItem>
             </Select>
           </FormControl>
         </Stack>
