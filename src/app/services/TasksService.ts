@@ -3,16 +3,16 @@ import { ITask } from "../../features/tasks/types";
 import { BASE_API } from "./Service.Constants";
 
 export const taskApi = createApi({
-  reducerPath: 'taskAPI',
+  reducerPath: "taskAPI",
   baseQuery: fetchBaseQuery({ baseUrl: BASE_API }),
   endpoints: (build) => ({
     fetchAllTasks: build.query<ITask[], number>({
       query: (limit: number = 5) => ({
-        url: '/todos',
+        url: "/todos",
         params: {
-            _limit: limit
-        }
-    })
-  })
-})
-})
+          _limit: limit,
+        },
+      }),
+    }),
+  }),
+});

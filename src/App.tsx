@@ -1,14 +1,12 @@
 import { BrowserRouter as Router } from "react-router-dom";
-import AnimRoutes from "./common/components/AnimRoutes/AnimRoutes"
+import AnimRoutes from "./common/components/AnimRoutes/AnimRoutes";
 
 function App() {
-
-return (
+  return (
     <Router>
-      
-  <AnimRoutes/>
+      <AnimRoutes />
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;

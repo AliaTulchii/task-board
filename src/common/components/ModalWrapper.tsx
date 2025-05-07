@@ -1,10 +1,5 @@
-
 const ModalWrapper = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+  return <div></div>;
+};
 
-export default ModalWrapper
+export default ModalWrapper;

@@ -1,6 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getTasksResponse, getUsersResponse, TASKS_FETCH_ALL, UNKNOWN_ERROR, USERS_FETCH_ALL} from "./Action.Constants";
-
+import {
+  TASKS_FETCH_ALL,
+  UNKNOWN_ERROR,
+  USERS_FETCH_ALL,
+} from "./Action.Constants";
+import { getTasksResponse, getUsersResponse } from "./api";
 
 export const fetchUsers = createAsyncThunk(
   USERS_FETCH_ALL,
@@ -9,7 +13,7 @@ export const fetchUsers = createAsyncThunk(
       const response = await getUsersResponse();
       return response.data;
     } catch (error) {
-      let message = UNKNOWN_ERROR
+      let message = UNKNOWN_ERROR;
       if (error instanceof Error) {
         message = error.message;
       }
@@ -18,12 +22,11 @@ export const fetchUsers = createAsyncThunk(
   }
 );
 
-
 export const fetchTasks = createAsyncThunk(
   TASKS_FETCH_ALL,
   async (_, thunkAPI) => {
     try {
-      const response = await getTasksResponse()
+      const response = await getTasksResponse();
       return response.data;
     } catch (error) {
       let message = UNKNOWN_ERROR;
