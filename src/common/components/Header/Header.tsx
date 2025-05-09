@@ -82,7 +82,7 @@ const Header: React.FC<HeaderProps> = ({
           </FormControl>
 
           <FormControl size="small" sx={{ minWidth: 130 }}>
-            <InputLabel>={INPUT_LABEL_COMPLETED}</InputLabel>
+            <InputLabel>{INPUT_LABEL_COMPLETED}</InputLabel>
             <Select
               value={completedFilter}
               label="Completed"
