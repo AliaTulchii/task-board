@@ -23,12 +23,13 @@ import {
   MENU_ITEM_FALSE,
   MENU_ITEM_TRUE,
 } from "./Header.Constants";
+import { CompletedFilter } from "../../types";
 
 interface HeaderProps {
   usernameFilter: string;
   completedFilter: string;
   onUsernameChange: Dispatch<SetStateAction<string>>;
-  onCompletedChange: Dispatch<SetStateAction<string>>;
+  onCompletedChange: Dispatch<SetStateAction<CompletedFilter>>;
 }
 
 const Header: React.FC<HeaderProps> = ({
@@ -61,7 +62,7 @@ const Header: React.FC<HeaderProps> = ({
           </Button>
         </Box>
         <Stack direction="row" spacing={2} alignItems="center" flexWrap="wrap">
-          <SearchInput />
+          <SearchInput searchTerm={usernameFilter} onSearchChange={onUsernameChange}/>
           <AddTodoBtn />
 
           <FormControl size="small" sx={{ minWidth: 120 }}>
@@ -81,15 +82,15 @@ const Header: React.FC<HeaderProps> = ({
           </FormControl>
 
           <FormControl size="small" sx={{ minWidth: 130 }}>
-            <InputLabel>={INPUT_LABEL_COMPLETED}</InputLabel>
+            <InputLabel>{INPUT_LABEL_COMPLETED}</InputLabel>
             <Select
               value={completedFilter}
               label="Completed"
-              onChange={(e) => onCompletedChange(e.target.value)}
+              onChange={(e) => onCompletedChange(e.target.value as CompletedFilter)}
             >
-              <MenuItem value="">{MENU_ITEM_ALL}</MenuItem>
-              <MenuItem value="true">{MENU_ITEM_TRUE}</MenuItem>
-              <MenuItem value="false">{MENU_ITEM_FALSE}</MenuItem>
+              <MenuItem value={CompletedFilter.ALL}>{MENU_ITEM_ALL}</MenuItem>
+              <MenuItem value={CompletedFilter.YES}>{MENU_ITEM_TRUE}</MenuItem>
+              <MenuItem value={CompletedFilter.NO}>{MENU_ITEM_FALSE}</MenuItem>
             </Select>
           </FormControl>
         </Stack>

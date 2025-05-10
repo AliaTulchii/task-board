@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { fetchTasks } from "../../app/store/reducers/ActionCreators";
+import { createTask, fetchTasks } from "../../app/store/reducers/ActionCreators";
 import { ITask } from "./types";
 import { useAppSelector } from "../../app/hooks/redux";
 
@@ -32,6 +32,11 @@ export const taskSlice = createSlice({
           state.tasks = action.payload;
         }
       )
+      .addCase(createTask.fulfilled, (state, action: PayloadAction<ITask>) => {
+        state.tasks.push(action.payload);
+        state.isLoading = false;
+        state.error = "";
+      })
       .addCase(fetchTasks.rejected, (state, action) => {
         state.isLoading = false;
         state.error =

@@ -2,16 +2,27 @@ import React, { useState } from "react";
 import { TextField, Stack, InputAdornment, IconButton } from "@mui/material";
 import "./SearchInput.css";
 import { UI_TEXT } from "../Components.Constants";
+import { useUsersSelector } from "../../../features/users/UserSlice";
+import { IUser } from "../../../features/users/types";
 
-const SearchInput: React.FC = () => {
-  const [searchTerm, setSearchTerm] = useState<string>("");
+interface SearchInputProps {
+  searchTerm: string;
+  onSearchChange: (value: string) => void;
+}
+
+const SearchInput: React.FC<SearchInputProps> = ({searchTerm, onSearchChange}) => {
+const { users } = useUsersSelector();
+  const [filteredUsers, setFilteredUsers] = useState<IUser[]>(users); 
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(e.target.value);
+    onSearchChange(e.target.value);
   };
 
   const handleSearch = () => {
-    console.log("Search term:", searchTerm);
+    const result = users.filter((user: IUser) =>
+      user.name.toLowerCase().includes(searchTerm.toLowerCase()) 
+    );
+    setFilteredUsers(result);
   };
 
   return (
@@ -29,7 +40,7 @@ const SearchInput: React.FC = () => {
               <IconButton
                 onClick={handleSearch}
                 edge="end"
-                sx={{ with: 30, fontSize: 16, color: "white" }}
+                sx={{ width: 80, fontSize: 16, backgroundColor: 'white', borderRadius: 1 }}
               >
                 {UI_TEXT.SEARCH_BUTTON}
               </IconButton>
