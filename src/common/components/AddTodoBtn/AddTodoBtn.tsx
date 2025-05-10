@@ -4,10 +4,10 @@ import { UI_TEXT } from "../Components.Constants";
 import AddTodoModal from "../AddTodoModal/AddTodoModal";
 
 const AddTodoBtn: React.FC = () => {
-  const [open, setOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handleClickOpen = () => {
-    setOpen(true);
+    setIsOpen(true);
   };
 
   return (
@@ -15,7 +15,7 @@ const AddTodoBtn: React.FC = () => {
     <Button variant="contained" color="primary" onClick={handleClickOpen}>
       {UI_TEXT.ADD_TASK_BUTTON}
     </Button>
-    <AddTodoModal open={open} onClose={() => setOpen(false)} />
+    <AddTodoModal open={isOpen} onClose={() => setIsOpen(false)} />
     </div>
   );
 };
