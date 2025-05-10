@@ -1,21 +1,21 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
   TASK_CREATE,
-  TASKS_FETCH_ALL,
-  UNKNOWN_ERROR,
-  USERS_FETCH_ALL,
+  TASKS_FETCH_ALL_API,
+  UNKNOWN_ERROR_MESSAGE,
+  USERS_FETCH_ALL_API,
 } from "./Action.Constants";
 import { getTasksResponse, getUsersResponse, putTaskResponse } from "./api";
 import { CreateTaskPayload } from "./types";
 
 export const fetchUsers = createAsyncThunk(
-  USERS_FETCH_ALL,
+  USERS_FETCH_ALL_API,
   async (_, thunkAPI) => {
     try {
       const response = await getUsersResponse();
       return response.data;
     } catch (error) {
-      let message = UNKNOWN_ERROR;
+      let message = UNKNOWN_ERROR_MESSAGE;
       if (error instanceof Error) {
         message = error.message;
       }
@@ -25,13 +25,13 @@ export const fetchUsers = createAsyncThunk(
 );
 
 export const fetchTasks = createAsyncThunk(
-  TASKS_FETCH_ALL,
+  TASKS_FETCH_ALL_API,
   async (_, thunkAPI) => {
     try {
       const response = await getTasksResponse();
       return response.data;
     } catch (error) {
-      let message = UNKNOWN_ERROR;
+      let message = UNKNOWN_ERROR_MESSAGE;
       if (error instanceof Error) {
         message = error.message;
       }
@@ -49,7 +49,7 @@ export const createTask = createAsyncThunk(
       const response = await putTaskResponse(newTask);
       return response.data;
     } catch (error) {
-      let message = UNKNOWN_ERROR;
+      let message = UNKNOWN_ERROR_MESSAGE;
       if (error instanceof Error) {
         message = error.message;
       }
