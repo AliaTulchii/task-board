@@ -62,7 +62,7 @@ const Header: React.FC<HeaderProps> = ({
           </Button>
         </Box>
         <Stack direction="row" spacing={2} alignItems="center" flexWrap="wrap">
-          <SearchInput />
+          <SearchInput searchTerm={usernameFilter} onSearchChange={onUsernameChange}/>
           <AddTodoBtn />
 
           <FormControl size="small" sx={{ minWidth: 120 }}>
