@@ -12,7 +12,6 @@ import {
   MenuItem,
   CircularProgress,
 } from "@mui/material";
-// import { selectAllUsers, selectUsersLoading } from "../../app/store/selectors/UserSelectors";
 import { createTask } from "../../../app/store/reducers/ActionCreators";
 import { IUser } from "../../../features/users/types";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks/redux";
