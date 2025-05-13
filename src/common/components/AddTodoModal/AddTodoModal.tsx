@@ -18,11 +18,11 @@ import { useAppDispatch, useAppSelector } from "../../../app/hooks/redux";
 import { selectAllUsers, selectUsersLoading } from "../../../features/users/selectors";
 
 interface AddTodoModalProps {
-  open: boolean;
+  isOpen: boolean;
   onClose: () => void;
 }
 
-const AddTodoModal: React.FC<AddTodoModalProps> = ({ open, onClose }) => {
+const AddTodoModal: React.FC<AddTodoModalProps> = ({ isOpen, onClose }) => {
   const dispatch = useAppDispatch();
   const users = useAppSelector(selectAllUsers);
   const isLoading = useAppSelector(selectUsersLoading);
@@ -40,7 +40,7 @@ const AddTodoModal: React.FC<AddTodoModalProps> = ({ open, onClose }) => {
   };
 
   return (
-    <Dialog open={open} onClose={onClose}>
+    <Dialog open={isOpen} onClose={onClose}>
       <DialogTitle>Add new  task</DialogTitle>
       <DialogContent>
         <TextField

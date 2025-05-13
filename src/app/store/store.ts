@@ -1,6 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import userReducer from "../../features/users/UserSlice";
 import taskReducer from "../../features/tasks/TaskSlice";
+import paginationReducer from '../../features/pagination/paginationSlice'
 import { userApi } from "../services/UserService";
 import { taskApi } from "../services/TasksService";
 
@@ -9,6 +10,7 @@ const rootReducer = combineReducers({
   [userApi.reducerPath]: userApi.reducer,
   tasks: taskReducer,
   [taskApi.reducerPath]: taskApi.reducer,
+  pagination: paginationReducer,
 });
 
 export const setupStore = () => {

@@ -14,7 +14,7 @@ const AnimRoutes: React.FC<AnimRoutesProps> = ({completedFilter, usernameFilter}
   return (
     <Routes location={location} key={location.pathname}>
       <Route path="/" element={<Dashboard completedFilter={completedFilter} usernameFilter={usernameFilter}/>} />
-      <Route path="/users" element={<UserList />} />
+      <Route path="/users" element={<UserList completedFilter={completedFilter} usernameFilter={usernameFilter}/>} />
       <Route path="/task/:id" element={<TaskDetails />} />
     </Routes>
   );
