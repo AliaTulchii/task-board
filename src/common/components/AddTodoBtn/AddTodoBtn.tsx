@@ -15,7 +15,7 @@ const AddTodoBtn: React.FC = () => {
     <Button variant="contained" color="primary" onClick={handleClickOpen}>
       {UI_TEXT.ADD_TASK_BUTTON}
     </Button>
-    <AddTodoModal open={isOpen} onClose={() => setIsOpen(false)} />
+    <AddTodoModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </div>
   );
 };
