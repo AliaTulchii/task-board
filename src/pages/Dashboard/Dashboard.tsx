@@ -1,5 +1,4 @@
 import TaskList from "../../features/tasks/components/TaskList/TaskList";
-import "./Dashboard.css";
 import { useEffect, useMemo } from "react";
 import {
   fetchTasks,
@@ -8,11 +7,11 @@ import {
 import { useAppDispatch } from "../../app/hooks/redux";
 import { useUsersSelector } from "../../features/users/UserSlice";
 import { useTasksSelector } from "../../features/tasks/TaskSlice";
-import { LOADING } from "../../features/users/components/User.Constants";
 import { filterTasks } from "./utils/filterTasks";
 import { CompletedFilter } from "../../common/types";
-import { usePaginationSelector } from "../../features/pagination/PaginationSlice";
+import { usePaginationSelector } from "../../features/pagination/paginationSlice";
 import Pagination from "../../features/pagination/components/Pagination";
+import Loader from "../../common/components/Loader";
 
 interface DashboardProps {
   completedFilter: CompletedFilter;
@@ -43,7 +42,7 @@ const Dashboard: React.FC<DashboardProps> = ({
   const paginatedTasks = filteredTasks.slice(startIndex, endIndex);
 
   if (!users.length || !tasks.length) {
-    return <h1>{LOADING}</h1>;
+    return <h1><Loader/></h1>;
   }
 
   return (
